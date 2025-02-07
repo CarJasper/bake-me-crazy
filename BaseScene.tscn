@@ -1,30 +1,35 @@
 [gd_scene load_steps=5 format=3 uid="uid://cu0bb52hvrgqc"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_15d46"]
-[ext_resource type="Texture2D" uid="uid://dxjg4oxluip2q" path="res://temp_art/gartic/earth_yeet.png" id="1_s5mow"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8o7j"]
+[ext_resource type="PackedScene" uid="uid://mp2vqq7ues4s" path="res://player.tscn" id="1_dkgmc"]
+[ext_resource type="Texture2D" uid="uid://cgp0iy46gv5vr" path="res://temp_art/gartic/godot_cross.png" id="2_qapuq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5es2w"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3yeu"]
+size = Vector2(377.19, 322.025)
+
 [node name="Node2D" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(92, 60)
-scale = Vector2(3.44, 3.16)
-script = ExtResource("1_15d46")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_e8o7j")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(9.53674e-07, 0)
-scale = Vector2(0.0980392, 0.111732)
-texture = ExtResource("1_s5mow")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 scale = Vector2(1, 10.72)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 9.32836)
 scale = Vector2(0.92, 1)
 shape = SubResource("RectangleShape2D_5es2w")
+
+[node name="Player" parent="." instance=ExtResource("1_dkgmc")]
+position = Vector2(146, 84)
+
+[node name="GodotCross" type="Sprite2D" parent="."]
+position = Vector2(413, 110)
+scale = Vector2(0.352608, 0.406801)
+texture = ExtResource("2_qapuq")
+
+[node name="StaticBody" type="StaticBody2D" parent="GodotCross"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GodotCross/StaticBody"]
+position = Vector2(-12.7622, -15.9783)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_f3yeu")

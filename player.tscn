@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://mp2vqq7ues4s"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_jll73"]
+[ext_resource type="Texture2D" uid="uid://dxjg4oxluip2q" path="res://temp_art/gartic/earth_yeet.png" id="2_q637a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8o7j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7eocq"]
+radius = 21.2798
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(92, 60)
+scale = Vector2(3.44, 3.16)
+script = ExtResource("1_jll73")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e8o7j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.0980392, 0.111732)
+texture = ExtResource("2_q637a")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7eocq")
+debug_color = Color(0.959413, 0.126981, 0.401314, 0.42)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

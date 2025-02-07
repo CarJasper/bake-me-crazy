@@ -1,5 +1,7 @@
 extends CharacterBody2D
 @export var speed:int = 500
+@onready var area_2d: Area2D = $Area2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,4 +12,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	velocity.x = speed * Input.get_axis("ui_left", "ui_right")
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		var overlap := area_2d.get_overlapping_bodies()
+		for overlaping in overlap:
+			print("Hi")
+	
 	pass
